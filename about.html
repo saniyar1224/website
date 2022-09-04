@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="flex">
+    <section>
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  background-color: #212121;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 20px;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/debut_light.png");
+}
+
+.nav {
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  background-color: #212121;
+  padding: 0 20px;
+  border-radius: 40px;
+  box-shadow: 0 10px 40px rgba(10, 10, 10, 0.9);
+}
+
+.nav-item {
+  color: #83818c;
+  padding: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+  margin: 0 6px;
+  z-index: 1;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  position: relative;
+}
+.nav-item:before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #dfe2ea;
+  border-radius: 8px 8px 0 0;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.nav-item:not(.is-active):hover:before {
+  opacity: 1;
+  bottom: 0;
+}
+
+.nav-item:not(.is-active):hover {
+  color: #fcfcfc;
+}
+
+.nav-indicator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  transition: 0.4s;
+  height: 5px;
+  z-index: 1;
+  border-radius: 8px 8px 0 0;
+}
+
+@media (max-width: 580px) {
+  .nav {
+    overflow: auto;
+  }
+}
+
+        </style>
+        <nav class="nav">
+            <a href="#" class="nav-item is-active" active-color="#f5af19">Home</a>
+            <a href="#" class="nav-item" active-color="#f64f59">About</a>
+            <a href="#" class="nav-item" active-color="#16ef8a">Testimonials</a>
+            <a href="#" class="nav-item" active-color="#c471ed">Blog</a>
+            <a href="#" class="nav-item" active-color="#ee9ca7">Contact</a>
+            <span class="nav-indicator"></span>
+          </nav>
+      
+         <script>
+            const indicator = document.querySelector('.nav-indicator');
+const items = document.querySelectorAll('.nav-item');
+
+function handleIndicator(el) {
+  items.forEach(item => {
+    item.classList.remove('is-active');
+    item.removeAttribute('style');
+  });
+
+  indicator.style.width = `${el.offsetWidth}px`;
+  indicator.style.left = `${el.offsetLeft}px`;
+  indicator.style.backgroundColor = el.getAttribute('active-color');
+
+  el.classList.add('is-active');
+  el.style.color = el.getAttribute('active-color');
+}
+
+
+items.forEach((item, index) => {
+  item.addEventListener('click', e => {handleIndicator(e.target);});
+  item.classList.contains('is-active') && handleIndicator(item);
+});
+         </script>
+          
+    </section>
+    <div class="section shadow flex">
+      <div class="person">
+        <img src="https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png" alt="" />
+      </div>
+      <div class="content">
+        <h2>Top UI Trends 2022</h2>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum
+          doloremque molestiae repellendus rem reprehenderit, quibusdam et est
+          debitis sed aperiam, placeat ex sequi expedita dolore odit sunt a.
+          <br />
+          <br />
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam non nulla
+          consectetur.
+          <br />
+          <br />
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
+          possimus consectetur ex laboriosam voluptas debitis porro doloribus
+          deleniti eius vel, eum pariatur odit.
+        </p>
+      </div>
+    </div>
+   
+  </body>
+</html>
