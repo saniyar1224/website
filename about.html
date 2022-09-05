@@ -9,161 +9,150 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="stylesheet" href="style1.css" />
   </head>
   <body class="flex">
-    <style>
-      body {
-  background-color: #222831;
-  overflow-x: hidden;
-  flex-direction: column;
-  padding: 2em;
+    <section>
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap");
+
+* {
+  box-sizing: border-box;
 }
 
-.head {
-  font-family: sans-serif;
-  color: #fff;
-  width: 90%;
-  display: block;
-  padding: 2em;
-  background-color: #232931;
-  border-radius: 8px;
-}
-
-.flex {
+body {
+  text-align: center;
   display: flex;
-  align-items: center;
+  height: 100vh;
+  width: 100%;
   justify-content: center;
+  background-color: #212121;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 20px;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/debut_light.png");
 }
 
-.shadow {
-  box-shadow: -2px -2px 8px 1px rgba(161, 161, 201, 0.2),
-    2px 2px 8px rgba(0, 0, 0, 0.8);
+.nav {
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  background-color: #212121;
+  padding: 0 20px;
+  border-radius: 40px;
+  box-shadow: 0 10px 40px rgba(10, 10, 10, 0.9);
 }
 
-.header {
-  font-size: 28px;
-  font-style: italic;
-  display: flex;
-  text-align: left;
-  flex: 1 1;
-  float: left;
+.nav-item {
+  color: #83818c;
+  padding: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+  margin: 0 6px;
+  z-index: 1;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  position: relative;
+}
+.nav-item:before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #dfe2ea;
+  border-radius: 8px 8px 0 0;
+  opacity: 0;
+  transition: 0.3s;
 }
 
-.menu {
-  width: 50%;
-  text-align: right;
+.nav-item:not(.is-active):hover:before {
+  opacity: 1;
+  bottom: 0;
 }
 
-.menu ul {
-  list-style: none;
-  display: inline-block;
-  margin: 0;
+.nav-item:not(.is-active):hover {
+  color: #fcfcfc;
 }
 
-.menu ul li {
-  display: inline-block;
-  margin-right: 2em;
-  padding: 1em 1.5em;
-  border-radius: 5px;
-  transition: background 0.2s ease;
-  cursor: pointer;
+.nav-indicator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  transition: 0.4s;
+  height: 5px;
+  z-index: 1;
+  border-radius: 8px 8px 0 0;
 }
 
-.menu ul li.mobile {
-  display: none;
-}
-
-.menu ul li > i {
-  margin-right: 15px;
-}
-
-.menu ul li:hover,
-.menu ul li:active {
-  background-color: #f73859;
-  box-shadow: 2px 2px 8px 1px rgba(74, 24, 2, 0.8),
-    inset -1px -1px 5px 1px rgba(255, 255, 255, 0.2),
-    inset 2px 2px 8px 1px rgba(74, 24, 2, 0.8);
-}
-
-.section {
-  margin-top: 3em;
-  padding: 1em 2em;
-  width: 90%;
-  border-radius: 18px;
-}
-
-.person {
-  width: 45%;
-}
-
-.person img {
-  width: 80%;
-  animation: move 2.3s linear infinite;
-  margin: 0 auto;
-  display: block;
-}
-
-.content {
-  width: 50%;
-  color: #f1f1f1;
-  text-align: left;
-  font-family: cursive;
-}
-
-@keyframes move {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-  100% {
-    transform: translateY(0);
+@media (max-width: 580px) {
+  .nav {
+    overflow: auto;
   }
 }
 
-@media (max-width: 680px) {
-  .menu ul li {
-    display: none;
-    margin-right: 0;
-  }
-  .menu ul li.mobile {
-    display: inline-block;
-  }
-  .menu ul li > i {
-    margin-right: 0;
-  }
-  .section {
-    flex-direction: column;
-    align-items: center;
-  }
-  .person,
-  .content {
-    width: 100%;
-    text-align: center;
-  }
+        </style>
+        <nav class="nav">
+            <a href="#" class="nav-item is-active" active-color="#f5af19">Home</a>
+            <a href="#" class="nav-item" active-color="#f64f59">About</a>
+            <a href="#" class="nav-item" active-color="#16ef8a">Testimonials</a>
+            <a href="#" class="nav-item" active-color="#c471ed">Blog</a>
+            <a href="#" class="nav-item" active-color="#ee9ca7">Contact</a>
+            <span class="nav-indicator"></span>
+          </nav>
+      
+         <script>
+            const indicator = document.querySelector('.nav-indicator');
+const items = document.querySelectorAll('.nav-item');
+
+function handleIndicator(el) {
+  items.forEach(item => {
+    item.classList.remove('is-active');
+    item.removeAttribute('style');
+  });
+
+  indicator.style.width = `${el.offsetWidth}px`;
+  indicator.style.left = `${el.offsetLeft}px`;
+  indicator.style.backgroundColor = el.getAttribute('active-color');
+
+  el.classList.add('is-active');
+  el.style.color = el.getAttribute('active-color');
 }
 
-    </style>
-    
-     
+
+items.forEach((item, index) => {
+  item.addEventListener('click', e => {handleIndicator(e.target);});
+  item.classList.contains('is-active') && handleIndicator(item);
+});
+         </script>
+          
+    </section>
     <div class="section shadow flex">
       <div class="person">
         <img src="https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png" alt="" />
       </div>
       <div class="content">
-        <h2>saniyar sakhdari</h2>
+        <h2>Top UI Trends 2022</h2>
         <p>
-        7th grade Ae school student with more than  10 international computer certificates 
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum
+          doloremque molestiae repellendus rem reprehenderit, quibusdam et est
+          debitis sed aperiam, placeat ex sequi expedita dolore odit sunt a.
           <br />
           <br />
-          with more than 20 website projects
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam non nulla
+          consectetur.
           <br />
           <br />
-          
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
+          possimus consectetur ex laboriosam voluptas debitis porro doloribus
+          deleniti eius vel, eum pariatur odit.
         </p>
       </div>
     </div>
+   
   </body>
 </html>
